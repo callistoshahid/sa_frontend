@@ -5,6 +5,7 @@ import AboutFirm from '@/components/home/AboutFirm';
 import PracticeAreas from '@/components/home/PracticeAreas'; // Client Component
 import NotableJudgments from '@/components/home/NotableJudgments';
 import Partners from '@/components/home/Partners';
+import CoreValues from '@/components/CoreValues';
 
 // Fetch all necessary data on the Server
 async function getData() {
@@ -30,6 +31,7 @@ export default async function Home() {
       <Hero />
       {/* <CourtsTicker /> */}
       <AboutFirm />
+      <CoreValues />
       
       {/* Pass the real practices data here */}
       <PracticeAreas practices={practices} />

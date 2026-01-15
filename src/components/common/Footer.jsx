@@ -122,7 +122,7 @@ export default function Footer() {
         <div className="border-t border-brand-800 mt-20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
           <p>&copy; {new Date().getFullYear()} S&A Law Chambers. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="hover:text-brand-gold">Privacy Policy</Link>
+            <Link href="/privacy-policy" className="hover:text-brand-gold">Privacy Policy</Link>
             <Link href="/disclaimer" className="hover:text-brand-gold">Disclaimer</Link>
           </div>
         </div>

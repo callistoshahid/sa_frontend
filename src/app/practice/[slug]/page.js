@@ -53,7 +53,7 @@ export default async function PracticeTemplate({ params }) {
     <main className="bg-white min-h-screen">
 
       {/* A. HERO SECTION */}
-      <section className="relative w-full aspect-[1128/191] flex items-center justify-center bg-brand-900">
+      <section className="relative w-full aspect-[1128/191] flex items-center justify-center bg-brand-900" id='practice'>
         <div className="absolute inset-0 z-0">
           <Image
             src="/sachambers_cover.jpeg"

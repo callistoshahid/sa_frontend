@@ -32,9 +32,9 @@ export default function Navbar({ practiceAreas = [] }) {
           {/* --- LOGO IMAGE --- */}
           {/* CHANGE 2: Increased container dimensions significantly */}
           {/* h-16 -> h-20 (Height) | w-52 -> w-64 (Mobile Width) | md:w-64 -> md:w-96 (Desktop Width) */}
-          <Link href="/" className="relative h-20 w-64 md:w-96 flex-shrink-0">
+          <Link href="/" className="relative h-40 w-64 md:w-96 flex-shrink-0">
             <Image
-              src="/brandlogo.png"
+              src="/brandlogo2.png"
               alt="S&A Law Chambers"
               fill
               className="object-contain object-left" // Keeps aspect ratio correct, aligned to left
