@@ -70,13 +70,13 @@ export default function Hero() {
         </motion.h1>
 
         {/* SUBTEXT */}
-        <motion.p 
+        {/* <motion.p 
           variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
           className="text-lg md:text-2xl font-light text-brand-cream/90 font-sans max-w-3xl mx-auto leading-relaxed"
         >
           Specialized Litigation Chamber practicing at the <br className="hidden md:block"/>
           <span className="text-white font-medium border-b border-white/30 pb-1">Supreme Court of India</span>
-        </motion.p>
+        </motion.p> */}
 
         {/* REMOVED BUTTON AS REQUESTED IN MOM */}
 

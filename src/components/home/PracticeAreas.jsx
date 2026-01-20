@@ -3,6 +3,47 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
+// 1. Import specific icons from React Icons
+import { 
+  FaHandshake,        // Arbitration
+  FaBuilding,         // Company
+  FaChartLine,        // Competition
+  FaLandmark,         // Constitutional
+  FaUserShield,       // Consumer
+  FaFilePen,          // Drafting
+  FaFileSignature,    // Specific Relief
+  FaBriefcase,        // Corporate
+  FaShieldHalved,     // Privacy
+  FaScaleBalanced,    // Civil
+  FaMoneyBillTrendUp, // Insolvency
+  FaLightbulb,        // IP
+  FaHouse,            // Real Estate
+  FaScroll,           // Succession
+  FaUserTie,          // White Collar
+  FaGavel,            // Default
+  FaArrowRight 
+} from "react-icons/fa6";
+
+// 2. Map schema values to Icons
+const iconMap = {
+  arbitration: <FaHandshake />,
+  company: <FaBuilding />,
+  competition: <FaChartLine />,
+  constitution: <FaLandmark />,
+  consumer: <FaUserShield />,
+  drafting: <FaFilePen />,
+  contract: <FaFileSignature />,
+  corporate: <FaBriefcase />,
+  privacy: <FaShieldHalved />,
+  civil: <FaScaleBalanced />,
+  insolvency: <FaMoneyBillTrendUp />,
+  ip: <FaLightbulb />,
+  realestate: <FaHouse />,
+  succession: <FaScroll />,
+  whitecollar: <FaUserTie />,
+  default: <FaGavel />
+};
+
 export default function PracticeAreas({ practices = [] }) {
   
   const container = {
@@ -33,7 +74,7 @@ export default function PracticeAreas({ practices = [] }) {
           <span className="text-slate-400 text-sm tracking-widest uppercase mt-4 md:mt-0">Comprehensive Legal Solutions</span>
         </motion.div>
 
-        {/* Grid of Links */}
+        {/* Grid */}
         <motion.div 
           variants={container}
           initial="hidden"
@@ -41,32 +82,47 @@ export default function PracticeAreas({ practices = [] }) {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {practices.map((area, index) => (
-            <motion.div 
-              key={area.slug?.current || index} 
-              variants={item}
-            >
-              <Link 
-                href={area.slug?.current ? `/practice/${area.slug.current}` : '#'}
-                className="group block p-8 bg-brand-cream border border-transparent hover:bg-white hover:shadow-xl hover:border-brand-gold/20 transition-all duration-300 rounded-sm h-full"
+          {practices.map((area, index) => {
+            // Get the icon
+            const IconComponent = iconMap[area.iconName] || iconMap.default;
+
+            return (
+              <motion.div 
+                key={area.slug?.current || index} 
+                variants={item}
               >
-                <div className="h-1 w-8 bg-brand-gold mb-4 group-hover:w-16 transition-all duration-300" />
-                
-                <h3 className="text-xl font-serif text-brand-900 group-hover:text-brand-gold transition-colors flex items-center justify-between mb-4">
-                  {area.title}
-                  <span className="opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                    →
-                  </span>
-                </h3>
+                <Link 
+                  href={area.slug?.current ? `/practice/${area.slug.current}` : '#'}
+                  className="group block p-6 bg-brand-cream border border-transparent hover:bg-white hover:shadow-xl hover:border-brand-gold/20 transition-all duration-300 rounded-sm h-full"
+                >
+                  {/* FLEX ROW LAYOUT: Icon Left, Text Right */}
+                  <div className="flex items-start gap-4">
+                    
+                    {/* Icon Section */}
+                    <div className="shrink-0 mt-1 text-3xl text-brand-gold/80 group-hover:text-brand-gold group-hover:scale-110 transition-all duration-300">
+                      {IconComponent}
+                    </div>
+                    
+                    {/* Text Section */}
+                    <div className="flex-1">
+                      {/* Decorative Gold Dash */}
+                      <div className="h-0.5 w-6 bg-brand-gold mb-3 group-hover:w-12 transition-all duration-300" />
+                      
+                      {/* Title */}
+                      <h3 className="text-lg font-serif text-brand-900 uppercase tracking-wide group-hover:text-brand-gold transition-colors flex items-center justify-between">
+                        {area.title}
+                        {/* Hidden Arrow that appears on hover */}
+                        <span className="opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-sm">
+                          <FaArrowRight />
+                        </span>
+                      </h3>
+                    </div>
 
-                {/* NEW: Lorem Ipsum Sub-text */}
-                {/* <p className="text-slate-500 text-sm leading-relaxed font-sans line-clamp-3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-                </p> */}
-
-              </Link>
-            </motion.div>
-          ))}
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

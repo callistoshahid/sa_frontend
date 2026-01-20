@@ -50,14 +50,14 @@ export default function AboutFirm() {
           </p>
 
           {/* Quote Box */}
-          <motion.div 
+          {/* <motion.div 
             whileHover={{ scale: 1.02 }} // Interactive movement on hover
             className="border-l-4 border-brand-gold pl-8 py-6 bg-brand-cream/50 shadow-sm rounded-r-lg mb-12 transition-transform duration-300"
           >
             <p className="text-lg font-serif italic text-brand-800">
               "We uphold honesty and integrity while providing solution-based approaches."
             </p>
-          </motion.div>
+          </motion.div> */}
 
           <Link href="/about" className="group inline-flex items-center text-sm font-bold text-brand-900 uppercase tracking-widest hover:text-brand-gold transition-colors">
             Read Full Profile

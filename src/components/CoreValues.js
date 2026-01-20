@@ -40,7 +40,7 @@ export default function CoreValues() {
               </div>
 
               {/* The Paragraph */}
-              <p className="font-sans text-xl md:text-2xl lg:text-3xl text-brand-900 font-light leading-relaxed relative z-10">
+              <p className="font-sans text-xl md:text-2xl lg:text-3xl text-brand-900 font-light leading-relaxed relative z-10 text-justify">
                 We uphold <span className="font-medium text-brand-gold">honesty and integrity</span> while providing solution-based approaches. 
                 Our advice is based on thorough legal research, experience, and specialised 
                 knowledge. Most importantly, we believe in an <span className="font-medium text-brand-gold">unwavering dedication</span> to the 

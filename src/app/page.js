@@ -16,7 +16,8 @@ async function getData() {
   const practices = await client.fetch(`
     *[_type == "practiceArea"] | order(title asc) {
       title,
-      slug
+      slug,
+      iconName
     }
   `);
 
