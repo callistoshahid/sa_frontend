@@ -24,22 +24,19 @@ export default function Navbar({ practiceAreas = [] }) {
   ];
 
   return (
-    // CHANGE 1: Increased Navbar height from h-20 (80px) to h-24 (96px)
     <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm font-sans">
       <div className="container mx-auto px-6">
         <div className="flex justify-between items-center h-24">
           
           {/* --- LOGO IMAGE --- */}
-          {/* CHANGE 2: Increased container dimensions significantly */}
-          {/* h-16 -> h-20 (Height) | w-52 -> w-64 (Mobile Width) | md:w-64 -> md:w-96 (Desktop Width) */}
           <Link href="/" className="relative h-40 w-64 md:w-96 flex-shrink-0">
             <Image
               src="/brandlogo2.png"
               alt="S&A Law Chambers"
               fill
-              className="object-contain object-left" // Keeps aspect ratio correct, aligned to left
+              className="object-contain object-left" 
               priority
-              sizes="(max-width: 768px) 250px, 400px" // Optimization hint
+              sizes="(max-width: 768px) 250px, 400px" 
             />
           </Link>
 
@@ -58,9 +55,14 @@ export default function Navbar({ practiceAreas = [] }) {
               Team
             </Link>
 
+            {/* --- NEW LINK: CLIENTELE --- */}
+            <Link href="/clients" className={`text-sm font-medium hover:text-brand-gold transition-colors ${pathname === '/clients' ? 'text-brand-900 font-bold' : 'text-slate-600'}`}>
+              Clientele
+            </Link>
+
             {/* PRACTICE AREAS DROPDOWN */}
             <div 
-              className="relative group h-24 flex items-center" // Updated height to match navbar
+              className="relative group h-24 flex items-center" 
               onMouseEnter={() => setPracticeDropdown(true)}
               onMouseLeave={() => setPracticeDropdown(false)}
             >
@@ -83,10 +85,6 @@ export default function Navbar({ practiceAreas = [] }) {
                 ))}
               </div>
             </div>
-
-            {/* <Link href="/judgments" className={`text-sm font-medium hover:text-brand-gold transition-colors ${pathname === '/judgments' ? 'text-brand-900 font-bold' : 'text-slate-600'}`}>
-              Judgments
-            </Link> */}
 
             <Link href="/insights" className={`text-sm font-medium hover:text-brand-gold transition-colors ${pathname === '/insights' ? 'text-brand-900 font-bold' : 'text-slate-600'}`}>
               Insights
@@ -118,6 +116,9 @@ export default function Navbar({ practiceAreas = [] }) {
             <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-900 border-b border-slate-100 pb-2">About Us</Link>
             <Link href="/team" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-900 border-b border-slate-100 pb-2">Team</Link>
             
+            {/* --- NEW MOBILE LINK: CLIENTELE --- */}
+            <Link href="/clients" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-900 border-b border-slate-100 pb-2">Clientele</Link>
+
             <div>
               <span className="text-xs font-bold text-brand-gold uppercase tracking-widest mb-3 block">Practice Areas</span>
               <div className="flex flex-col space-y-3 pl-4 border-l-2 border-slate-100">
@@ -129,7 +130,6 @@ export default function Navbar({ practiceAreas = [] }) {
               </div>
             </div>
 
-            <Link href="/judgments" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-900 border-b border-slate-100 pb-2">Judgments</Link>
             <Link href="/insights" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-900 border-b border-slate-100 pb-2">Insights</Link>
             <Link href="/contact" onClick={() => setIsOpen(false)} className="text-lg font-medium text-brand-900 font-bold">Contact Us</Link>
           </div>

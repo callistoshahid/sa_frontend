@@ -3,8 +3,8 @@ import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-// --- NEW IMPORT: The Judgments Component ---
 import PracticeAreaJudgments from '@/components/PracticeAreaJudgments';
+
 
 // 1. Metadata Generation
 export async function generateMetadata({ params }) {
@@ -52,24 +52,29 @@ export default async function PracticeTemplate({ params }) {
   return (
     <main className="bg-white min-h-screen">
 
-      {/* A. HERO SECTION */}
-      <section className="relative w-full aspect-[1128/191] flex items-center justify-center bg-brand-900" id='practice'>
+     {/* A. HERO SECTION */}
+      <section className="relative w-full h-[40vh] min-h-[300px] flex items-center justify-center bg-brand-900 overflow-hidden" id='practice'>
+        
+        {/* --- NEW BACKGROUND APPROACH --- */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/sachambers_cover.jpeg"
+            src="/sachambers_hero2.jpg" 
             alt="S&A Law Chambers Practice Area"
             fill
-            className="object-fill"
+            className="object-cover object-center"
             priority
+            quality={100}
           />
-          <div className="absolute inset-0 bg-brand-900/40" />
+          {/* Dark Overlay (30%) */}
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
 
+        {/* --- CONTENT --- */}
         <div className="relative z-10 text-center px-6 w-full mt-4">
           <span className="text-brand-gold text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-2 block drop-shadow-md">
             Expertise
           </span>
-          <h1 className="text-2xl md:text-5xl lg:text-6xl font-serif font-bold text-white tracking-wide mb-3 drop-shadow-xl">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white tracking-wide mb-3 drop-shadow-xl">
             {practice.title}
           </h1>
           <div className="h-0.5 w-16 bg-brand-gold mx-auto shadow-[0_0_10px_rgba(197,160,89,0.8)]"></div>

@@ -84,7 +84,7 @@ export default function Footer() {
               Stay Informed
             </h4>
             <p className="text-slate-400 text-xs mb-4">
-              Subscribe to receive legal insights and updates from the chambers.
+              Subscribe to our Newsletter to receive legal insights and updates.
             </p>
             
             {status === 'success' ? (

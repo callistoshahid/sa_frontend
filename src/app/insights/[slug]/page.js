@@ -29,30 +29,31 @@ export default async function BlogPost({ params }) {
   return (
     <main className="bg-white min-h-screen font-sans">
       
-      {/* 1. Article Header */}
-      <section className="bg-brand-cream pt-32 pb-16 px-6">
-        <div className="container mx-auto max-w-4xl text-center">
-          <div className="flex justify-center gap-4 text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">
-            <span>{new Date(post.publishedAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-            <span>•</span>
-            <span className="text-brand-gold">{post.author || 'S&A Law Chambers'}</span>
-          </div>
-          
-          <h1 className="text-3xl md:text-5xl font-serif font-bold text-brand-900 leading-tight mb-10">
-            {post.title}
-          </h1>
+      <section className="relative w-full h-[40vh] min-h-[300px] flex items-center justify-center overflow-hidden bg-brand-900">
+        
+        {/* --- NEW BACKGROUND APPROACH --- */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/sachambers_hero2.jpg" 
+            alt="S&A Law Chambers Insights"
+            fill
+            className="object-cover object-center"
+            priority
+            quality={100}
+          />
+          {/* Dark Overlay (30%) */}
+          <div className="absolute inset-0 bg-black/30"></div>
+        </div>
 
-          {post.mainImage && (
-            <div className="relative w-full h-[300px] md:h-[500px] rounded-sm overflow-hidden shadow-2xl">
-              <Image 
-                src={urlFor(post.mainImage).url()} 
-                alt={post.title}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          )}
+        {/* --- CONTENT --- */}
+        <div className="relative z-10 text-center px-6">
+          <span className="text-brand-gold text-xs font-bold tracking-[0.3em] uppercase mb-4 block font-serif drop-shadow-md">
+            Knowledge Center
+          </span>
+          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white tracking-wide mb-6 drop-shadow-xl">
+            Insights & Updates
+          </h1>
+          <div className="h-1 w-24 bg-brand-gold mx-auto shadow-[0_0_15px_rgba(197,160,89,0.6)]"></div>
         </div>
       </section>
 

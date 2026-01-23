@@ -11,7 +11,10 @@ export default function ContactPage() {
       
       {/* 1. HERO HEADER */}
       <section className="relative h-[40vh] bg-brand-900 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        
+        {/* UPDATED BACKGROUND IMAGE */}
+        <div className="absolute inset-0 opacity-20 bg-[url('/sachambers_cover.jpeg')] bg-cover bg-center bg-no-repeat"></div>
+        
         <div className="relative z-10 text-center px-6">
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-white tracking-wide mb-4">
             Contact Chambers

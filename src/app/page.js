@@ -6,7 +6,8 @@ import PracticeAreas from '@/components/home/PracticeAreas'; // Client Component
 import NotableJudgments from '@/components/home/NotableJudgments';
 import Partners from '@/components/home/Partners';
 import CoreValues from '@/components/CoreValues';
-
+import ForumsOfPractice from '@/components/ForumsOfPractice';
+import LatestInsights from '@/components/LatestInsights';
 // Fetch all necessary data on the Server
 async function getData() {
   const judgments = await client.fetch(`*[_type == "judgment"] | order(year desc)[0...5] {title, citation, court, summary}`);
@@ -21,15 +22,23 @@ async function getData() {
     }
   `);
 
-  return { judgments, team, practices };
+  const posts = await client.fetch(`
+    *[_type == "linkedInPost"] | order(date desc) [0...3] {
+      _id,
+      embedCode
+    }
+  `);
+
+  return { judgments, team, practices, posts };
 }
 
 export default async function Home() {
-  const { judgments, team, practices } = await getData();
+  const { judgments, team, practices, posts } = await getData();
 
   return (
     <main>
       <Hero />
+      <ForumsOfPractice />
       {/* <CourtsTicker /> */}
       <AboutFirm />
       <CoreValues />
@@ -37,7 +46,8 @@ export default async function Home() {
       {/* Pass the real practices data here */}
       <PracticeAreas practices={practices} />
       
-      <NotableJudgments judgments={judgments} />
+      {/* <NotableJudgments judgments={judgments} /> */}
+      <LatestInsights posts={posts} />
       <Partners team={team} />
     </main>
   );
