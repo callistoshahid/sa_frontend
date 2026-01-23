@@ -8,7 +8,7 @@ export default function CoreValues() {
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
           
-          {/* 1. Title Section (Animated Fade In) */}
+          {/* 1. Title Section */}
           <div className="md:col-span-4 lg:col-span-4">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -24,23 +24,27 @@ export default function CoreValues() {
             </motion.div>
           </div>
 
-          {/* 2. Paragraph Section (Interactive Card) */}
+          {/* 2. Paragraph Section */}
           <div className="md:col-span-8 lg:col-span-8">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              whileHover={{ scale: 1.02, x: 10 }} // Subtle interaction on hover
+              whileHover={{ scale: 1.02, x: 10 }}
               className="group relative p-10 md:p-12 bg-white shadow-sm border-l-4 border-brand-900 cursor-default transition-colors duration-500 hover:border-brand-gold"
             >
-              {/* Decorative Quote Icon (Background) */}
+              {/* Decorative Quote Icon */}
               <div className="absolute top-4 right-6 text-9xl font-serif text-brand-cream opacity-50 select-none pointer-events-none">
                 &rdquo;
               </div>
 
-              {/* The Paragraph */}
-              <p className="font-sans text-xl md:text-2xl lg:text-3xl text-brand-900 font-light leading-relaxed relative z-10 text-justify">
+              {/* UPDATED PARAGRAPH: 
+                  - 'text-justify': Aligns both edges
+                  - 'hyphens-auto': Breaks words to fix the "long space" issue
+                  - 'break-words': Safety net for long words
+              */}
+              <p className="font-sans text-xl md:text-2xl lg:text-3xl text-brand-900 font-light leading-relaxed relative z-10 text-justify hyphens-auto break-words">
                 We uphold <span className="font-medium text-brand-gold">honesty and integrity</span> while providing solution-based approaches. 
                 Our advice is based on thorough legal research, experience, and specialised 
                 knowledge. Most importantly, we believe in an <span className="font-medium text-brand-gold">unwavering dedication</span> to the 
