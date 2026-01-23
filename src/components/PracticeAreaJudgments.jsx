@@ -16,7 +16,8 @@ export default function PracticeAreaJudgments({ judgments }) {
             if (!item.title) return null;
             
             // Determine if there is a link (External PDF or Internal Slug)
-            const linkTarget = item.link || (item.slug?.current ? `/judgments/${item.slug.current}` : null);
+            // const linkTarget = item.link || (item.slug?.current ? `/judgments/${item.slug.current}` : null);
+            const linkTarget = "#"
 
             return (
               <div 
@@ -45,14 +46,9 @@ export default function PracticeAreaJudgments({ judgments }) {
                   {/* Title (Linked if URL exists, otherwise plain text) */}
                   <h3 className="text-xl font-serif font-semibold text-brand-900">
                     {linkTarget ? (
-                      <a 
-                        href={linkTarget} 
-                        target={item.link ? "_blank" : "_self"} 
-                        rel="noopener noreferrer"
-                        className="hover:text-brand-gold transition-colors"
-                      >
-                        {item.title}
-                      </a>
+                     
+                      
+                      <span className='hover:text-brand-gold transition-colors'>{item.title}</span>
                     ) : (
                       item.title
                     )}
