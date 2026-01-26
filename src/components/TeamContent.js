@@ -9,8 +9,8 @@ export default function TeamContent({ team }) {
   
   // Animation Variants
   const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
 
   const staggerContainer = {
@@ -28,8 +28,6 @@ export default function TeamContent({ team }) {
 
      {/* 1. ANIMATED HERO SECTION */}
       <section className="relative w-full h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden bg-brand-900">
-        
-        {/* --- NEW BACKGROUND APPROACH --- */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/sachambers_hero2.jpg" 
@@ -39,11 +37,9 @@ export default function TeamContent({ team }) {
             priority
             quality={100}
           />
-          {/* Dark Overlay (30%) */}
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        {/* --- CONTENT --- */}
         <div className="relative z-10 text-center px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -63,7 +59,7 @@ export default function TeamContent({ team }) {
         </div>
       </section>
 
-      {/* 2. CORE VALUES (Fade In) */}
+      {/* 2. CORE VALUES */}
       <section className="bg-white py-24 border-b border-brand-gold/20">
         <div className="container mx-auto px-6 max-w-4xl text-center">
           <motion.div
@@ -86,37 +82,31 @@ export default function TeamContent({ team }) {
         </div>
       </section>
 
-      {/* 3. PARTNER PROFILES (Scroll Reveal) */}
+      {/* 3. PARTNER PROFILES */}
       <section className="py-24 container mx-auto px-6 max-w-6xl">
-        <div className="space-y-40"> {/* Large spacing for dramatic effect */}
+        <div className="space-y-32"> 
 
           {team.map((partner, index) => (
             <motion.div
               key={partner.name}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-10%" }} // Triggers when 10% of element is visible
+              viewport={{ once: true, margin: "-10%" }}
               variants={staggerContainer}
-              className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 lg:gap-24 items-center`}
+              className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 lg:gap-20 items-start`}
             >
 
               {/* IMAGE COLUMN */}
               <motion.div 
                 variants={fadeInUp}
-                className="w-full md:w-1/2 relative group"
+                className="w-full md:w-[40%] flex-shrink-0"
               >
-                {/* Image Frame with Gold tint background */}
-                <div className="aspect-[4/5] w-full p-4 bg-brand-gold/10 rounded-sm relative">
-                  {/* Decorative Border Lines */}
-                  <div className="absolute top-0 left-0 w-full h-full border border-brand-gold/20 translate-x-2 translate-y-2 -z-10" />
-                  
-                  <div className="w-full h-full overflow-hidden relative shadow-lg">
+                <div className="aspect-[3/4] w-full relative shadow-xl bg-white p-2 border border-brand-gold/10">
                     {partner.image ? (
-                      <motion.img
+                      <img
                         src={urlFor(partner.image).url()}
                         alt={partner.name}
-                        whileHover={{ scale: 1.03 }} // Subtle zoom on hover
-                        transition={{ duration: 0.7 }}
+                        // UPDATED: Removed 'grayscale hover:grayscale-0 transition-all duration-700'
                         className="object-cover w-full h-full"
                       />
                     ) : (
@@ -124,41 +114,44 @@ export default function TeamContent({ team }) {
                         No Image
                       </div>
                     )}
-                  </div>
                 </div>
               </motion.div>
 
               {/* TEXT COLUMN */}
-              <div className="w-full md:w-1/2">
+              <div className="w-full md:w-[60%] pt-2">
 
                 {/* Name */}
                 <motion.h2 
                   variants={fadeInUp}
-                  className="text-5xl md:text-6xl font-serif text-brand-900 uppercase tracking-wide mb-6"
+                  className="text-3xl md:text-3xl font-serif text-brand-900 uppercase tracking-wide mb-2"
                 >
                   {partner.name}
                 </motion.h2>
 
-                {/* Designation Bar */}
+                {/* Designation */}
                 <motion.div variants={fadeInUp}>
-                  <div className="inline-block bg-brand-900 text-brand-gold text-xs font-bold uppercase tracking-[0.25em] px-5 py-3 mb-10 shadow-md">
+                  <p className="text-brand-gold font-sans font-semibold uppercase tracking-[0.15em] text-sm mb-8">
                     {partner.designation}
-                  </div>
+                  </p>
                 </motion.div>
 
                 {/* Education */}
-                <motion.div variants={fadeInUp} className="mb-10 border-l-[3px] border-brand-gold pl-6 py-2">
-                  <h4 className="text-xs font-bold text-brand-700/60 uppercase tracking-widest mb-3">Education</h4>
-                  <p className="text-xl font-serif text-brand-900 italic opacity-90 whitespace-pre-line leading-relaxed">
+                <motion.div variants={fadeInUp} className="mb-6">
+                  <h4 className="text-sm font-bold text-brand-900 uppercase tracking-widest mb-2 font-sans">
+                    Education
+                  </h4>
+                  <p className="text-lg text-brand-700 font-sans leading-relaxed whitespace-pre-line">
                     {partner.education}
                   </p>
                 </motion.div>
 
                 {/* Previous Work */}
                 {partner.previousWork && (
-                  <motion.div variants={fadeInUp} className="mb-10 border-l-[3px] border-brand-900 pl-6 py-2">
-                    <h4 className="text-xs font-bold text-brand-700/60 uppercase tracking-widest mb-3">Previous Experience</h4>
-                    <p className="text-lg font-serif text-brand-700 opacity-90 leading-relaxed">
+                  <motion.div variants={fadeInUp} className="mb-8">
+                    <h4 className="text-sm font-bold text-brand-900 uppercase tracking-widest mb-2 font-sans">
+                      Previous Experience
+                    </h4>
+                    <p className="text-lg text-brand-700 font-sans leading-relaxed">
                       {partner.previousWork}
                     </p>
                   </motion.div>
@@ -167,7 +160,7 @@ export default function TeamContent({ team }) {
                 {/* Profile Summary */}
                 {partner.profileDescription && (
                   <motion.div variants={fadeInUp}>
-                    <div className="text-brand-700 font-sans leading-relaxed text-lg whitespace-pre-wrap text-justify border-t border-brand-gold/20 pt-8">
+                    <div className="text-brand-700 font-sans leading-relaxed text-lg whitespace-pre-wrap text-justify border-t border-brand-gold/20 pt-8 mt-8">
                       {partner.profileDescription}
                     </div>
                   </motion.div>

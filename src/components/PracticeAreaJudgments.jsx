@@ -48,7 +48,7 @@ export default function PracticeAreaJudgments({ judgments }) {
                     {linkTarget ? (
                      
                       
-                      <span className='hover:text-brand-gold transition-colors'>{item.title}</span>
+                      <span className='hover:text-brand-gold transition-colors font-sans'>{item.title}</span>
                     ) : (
                       item.title
                     )}
@@ -56,7 +56,7 @@ export default function PracticeAreaJudgments({ judgments }) {
                   
                   {/* Full Summary Text (No truncation) */}
                   {item.summary && (
-                    <div className="text-slate-700 text-sm leading-relaxed whitespace-pre-wrap">
+                    <div className="text-slate-700 text-sm leading-relaxed whitespace-pre-wrap font-sans">
                       {item.summary}
                     </div>
                   )}

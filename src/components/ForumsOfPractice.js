@@ -59,7 +59,7 @@ export default function ForumsOfPractice() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-serif text-white mb-6"
           >
-            Forums of <span className="text-brand-gold italic">Practice</span>
+            Forums of Practice<span className="text-brand-gold italic"></span>
           </motion.h2>
           
           <motion.div 

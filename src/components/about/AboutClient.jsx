@@ -119,7 +119,7 @@ export default function AboutClient() {
             <h3 className="text-3xl font-serif text-brand-900 mb-8 border-b border-brand-gold/30 pb-4 inline-block">
               Forums of Practice
             </h3>
-            <p className="mb-8 text-brand-700">
+            <p className="mb-8 text-brand-700 font-sans">
               We are experienced in advising and representing clients in cases before:
             </p>
           </motion.div>
@@ -129,7 +129,7 @@ export default function AboutClient() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12"
+            className="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-12 font-sans"
           >
             {[
               "Supreme Court of India",

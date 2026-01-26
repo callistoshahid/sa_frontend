@@ -36,7 +36,7 @@ export default function ContactPage() {
                 Head Office
               </span>
               <h2 className="text-3xl font-serif text-brand-900 mb-4">Neeti Bagh, New Delhi</h2>
-              <p className="text-brand-700 leading-relaxed text-lg font-serif">
+              <p className="text-brand-700 leading-relaxed text-lg font-sans">
                 A-25, Lower Ground Floor,<br />
                 Neeti Bagh, New Delhi - 110049
               </p>
@@ -46,13 +46,13 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="group">
                 <span className="text-xs text-slate-400 uppercase tracking-widest block mb-2 font-sans">Telephone</span>
-                <a href="tel:01146052344" className="text-xl font-serif text-brand-900 hover:text-brand-gold transition-colors">
+                <a href="tel:01146052344" className="text-xl font-sans text-brand-900 hover:text-brand-gold transition-colors">
                   011-46052455
                 </a>
               </div>
               <div className="group">
                 <span className="text-xs text-slate-400 uppercase tracking-widest block mb-2 font-sans">Email</span>
-                <a href="mailto:office@sachambers.in" className="text-xl font-serif text-brand-900 hover:text-brand-gold transition-colors break-all">
+                <a href="mailto:office@sachambers.in" className="text-xl font-sans text-brand-900 hover:text-brand-gold transition-colors break-all">
                   office@sachambers.in
                 </a>
               </div>

@@ -17,8 +17,8 @@ export default function CoreValues() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-5xl md:text-6xl font-serif text-brand-900 leading-tight">
-                Our Core <br />
-                <span className="text-brand-gold italic">Values</span>
+                Our Core <br /> Values 
+                <span className="text-brand-gold italic"></span>
               </h2>
               <div className="h-1 w-24 bg-brand-900 mt-6 rounded-full" />
             </motion.div>

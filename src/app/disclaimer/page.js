@@ -25,10 +25,10 @@ export default function TermsAndDisclaimer() {
               Legal Disclaimer
             </h3>
             <div className="text-brand-900 text-sm md:text-base leading-relaxed space-y-4 font-medium">
-              <p>
+              <p className="font-sans">
                 This website contains information about our Chambers. It should not be construed as, and is not meant to be solicitation or an advertisement of our services. The contents of this website do not constitute legal advice.
               </p>
-              <p>
+              <p className="font-sans">
                 By visiting the website, the visitor confirms that they wish to access this website and have not been solicited by our Chambers to do so. The information provided on this website is true and correct.
               </p>
             </div>
@@ -38,22 +38,22 @@ export default function TermsAndDisclaimer() {
           <div className="prose prose-lg prose-headings:font-serif prose-headings:text-brand-900 text-slate-600 max-w-none">
             
             <h3>1. Terms of Use</h3>
-            <p>
+            <p className="font-sans">
               By accessing this website, you agree to be bound by these Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.
             </p>
 
             <h3>2. Intellectual Property</h3>
-            <p>
+            <p className="font-sans">
               All materials on S&A Law Chambers' website are the intellectual property of the firm. You may view, download for caching purposes only, and print pages for your own personal use, subject to restrictions. You must not republish, sell, or reproduce material from this website for commercial purposes.
             </p>
 
             <h3>3. No Lawyer-Client Relationship</h3>
-            <p>
+            <p className="font-sans">
               Accessing this website or communicating with S&A Law Chambers via email or through this site does not create an attorney-client relationship. You should not act upon any information on this website without seeking advice from professional legal counsel.
             </p>
 
             <h3>4. Limitation of Liability</h3>
-            <p>
+            <p className="font-sans">
               In no event shall S&A Law Chambers be liable for any damages (including, without limitation, damages for loss of data or profit) arising out of the use or inability to use the materials on our website.
             </p>
 
