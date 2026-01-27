@@ -52,14 +52,14 @@ export default function Partners({ team = [] }) {
 
                 <h3 className="text-2xl font-serif text-brand-900 mb-2">{partner.name}</h3>
                 
-                <p className="text-brand-gold text-xs font-bold uppercase tracking-widest mb-4">
+                <p className="text-brand-gold text-xs font-bold uppercase tracking-widest mb-4 font-sans">
                   {partner.designation}
                 </p>
                 
                 {/* --- FIX START --- */}
                 {/* Added 'whitespace-pre-line' so it respects Enter keys from Sanity */}
                 <div className="text-slate-500 text-sm leading-relaxed max-w-sm mx-auto">
-                  <p className="whitespace-pre-line">{partner.bio}</p>
+                  <p className="whitespace-pre-line font-sans">{partner.bio}</p>
                 </div>
                 {/* --- FIX END --- */}
 

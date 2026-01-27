@@ -104,7 +104,7 @@ export default function AboutClient() {
           <h3 className="text-xl font-serif font-bold text-brand-gold mb-6 uppercase tracking-widest">
             Core Values
           </h3>
-          <p className="text-2xl md:text-3xl font-light italic leading-relaxed z-10 relative">
+          <p className="text-2xl md:text-3xl font-light italic leading-relaxed z-10 relative font-sans">
             "At the Chambers, we uphold honesty and integrity while providing solution-based approaches."
           </p>
         </motion.div>
@@ -170,7 +170,7 @@ export default function AboutClient() {
             href="/team"
             className="group relative inline-block px-12 py-4 bg-brand-900 text-white font-bold uppercase tracking-widest overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
           >
-            <span className="relative z-10 group-hover:text-brand-gold transition-colors">Meet The Partners</span>
+            <span className="relative z-10 group-hover:text-brand-gold transition-colors font-sans">Meet The Partners</span>
             <div className="absolute inset-0 bg-black/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
           </Link>
         </motion.div>

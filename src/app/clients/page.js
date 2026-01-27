@@ -81,7 +81,7 @@ export default async function ClientsPage() {
                   
                   <div className="text-center">
                     {/* UPDATED: Removed 'line-clamp-2' so full name shows */}
-                    <h3 className="text-sm font-bold text-brand-900 uppercase tracking-wider group-hover:text-brand-gold transition-colors">
+                    <h3 className="text-sm font-bold text-brand-900 uppercase tracking-wider group-hover:text-brand-gold transition-colors font-sans">
                       {item.name}
                     </h3>
                   </div>
@@ -89,7 +89,7 @@ export default async function ClientsPage() {
               ) : (
                 <div className="flex flex-col items-center gap-3 text-brand-900/40 group-hover:text-brand-gold transition-colors">
                   <FaBuilding className="text-4xl" />
-                  <span className="text-sm font-bold uppercase tracking-wider text-center">{item.name}</span>
+                  <span className="text-sm font-bold uppercase tracking-wider text-center font-sans">{item.name}</span>
                 </div>
               )}
             </div>

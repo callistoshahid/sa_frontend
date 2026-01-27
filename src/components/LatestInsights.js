@@ -111,7 +111,7 @@ export default function LatestInsights({ posts = [] }) {
              <a 
               href="https://www.linkedin.com/company/sachambers/posts/?feedView=all" 
               target="_blank"
-              className="inline-flex items-center gap-2 text-brand-gold text-xs font-bold uppercase tracking-widest hover:underline"
+              className="inline-flex items-center gap-2 text-brand-gold text-xs font-bold uppercase tracking-widest hover:underline font-sans"
             >
               View all posts on LinkedIn <FaLinkedinIn />
             </a>
