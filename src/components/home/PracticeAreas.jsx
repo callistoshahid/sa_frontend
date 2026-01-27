@@ -5,22 +5,22 @@ import Link from 'next/link';
 
 // 1. Import specific icons from React Icons
 import { 
-  FaHandshake,        // Arbitration
-  FaBuilding,         // Company
-  FaChartLine,        // Competition
-  FaLandmark,         // Constitutional
-  FaUserShield,       // Consumer
-  FaFilePen,          // Drafting
-  FaFileSignature,    // Specific Relief
-  FaBriefcase,        // Corporate
-  FaShieldHalved,     // Privacy
-  FaScaleBalanced,    // Civil
-  FaMoneyBillTrendUp, // Insolvency
-  FaLightbulb,        // IP
-  FaHouse,            // Real Estate
-  FaScroll,           // Succession
-  FaUserTie,          // White Collar
-  FaGavel,            // Default
+  FaHandshake,        
+  FaBuilding,         
+  FaChartLine,        
+  FaLandmark,         
+  FaUserShield,       
+  FaFilePen,          
+  FaFileSignature,    
+  FaBriefcase,        
+  FaShieldHalved,     
+  FaScaleBalanced,    
+  FaMoneyBillTrendUp, 
+  FaLightbulb,        
+  FaHouse,            
+  FaScroll,           
+  FaUserTie,          
+  FaGavel,            
   FaArrowRight 
 } from "react-icons/fa6";
 
@@ -59,6 +59,9 @@ export default function PracticeAreas({ practices = [] }) {
     show: { opacity: 1, y: 0 }
   };
 
+  // Fallback Lorem Ipsum text as requested
+  const defaultText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+
   return (
     <section id="practice-areas" className="py-24 bg-white">
       <div className="container mx-auto px-6">
@@ -83,7 +86,6 @@ export default function PracticeAreas({ practices = [] }) {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {practices.map((area, index) => {
-            // Get the icon
             const IconComponent = iconMap[area.iconName] || iconMap.default;
 
             return (
@@ -95,7 +97,6 @@ export default function PracticeAreas({ practices = [] }) {
                   href={area.slug?.current ? `/practice/${area.slug.current}` : '#'}
                   className="group block p-6 bg-brand-cream border border-transparent hover:bg-white hover:shadow-xl hover:border-brand-gold/20 transition-all duration-300 rounded-sm h-full"
                 >
-                  {/* FLEX ROW LAYOUT: Icon Left, Text Right */}
                   <div className="flex items-start gap-4">
                     
                     {/* Icon Section */}
@@ -105,17 +106,22 @@ export default function PracticeAreas({ practices = [] }) {
                     
                     {/* Text Section */}
                     <div className="flex-1">
-                      {/* Decorative Gold Dash */}
+                      {/* Decorative Dash */}
                       <div className="h-0.5 w-6 bg-brand-gold mb-3 group-hover:w-12 transition-all duration-300" />
                       
                       {/* Title */}
-                      <h3 className="text-lg font-serif text-brand-900 uppercase tracking-wide group-hover:text-brand-gold transition-colors flex items-center justify-between">
+                      <h3 className="text-lg font-serif text-brand-900 uppercase tracking-wide group-hover:text-brand-gold transition-colors flex items-center justify-between mb-2">
                         {area.title}
-                        {/* Hidden Arrow that appears on hover */}
                         <span className="opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-sm">
                           <FaArrowRight />
                         </span>
                       </h3>
+
+                      {/* NEW: SEO Description (2 Lines Max) */}
+                      <p className="text-sm text-slate-600 font-sans leading-relaxed line-clamp-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                        {/* Uses real data if available, otherwise uses Lorem Ipsum */}
+                        {area.description ? area.description : defaultText}
+                      </p>
                     </div>
 
                   </div>

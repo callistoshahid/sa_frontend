@@ -18,7 +18,8 @@ async function getData() {
     *[_type == "practiceArea"] | order(title asc) {
       title,
       slug,
-      iconName
+      iconName,
+      description,
     }
   `);
 

@@ -64,7 +64,7 @@ export default function BlogList({ posts = [] }) {
 
               {/* Content */}
               <div className="p-8 flex flex-col flex-grow">
-                <h3 className="text-xl font-serif text-brand-900 mb-4 leading-snug group-hover:text-brand-gold transition-colors">
+                <h3 className="font-sans text-xl text-brand-900 mb-4 leading-snug group-hover:text-brand-gold transition-colors">
                   <Link href={`/insights/${post.slug.current}`}>
                     {post.title}
                   </Link>
