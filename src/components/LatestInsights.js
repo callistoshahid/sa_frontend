@@ -11,7 +11,7 @@ export default function LatestInsights({ posts = [] }) {
   const scroll = (direction) => {
     const { current } = scrollRef;
     if (current) {
-      const scrollAmount = 400; // Adjust scroll distance
+      const scrollAmount = 400; 
       if (direction === 'left') {
         current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       } else {
@@ -24,7 +24,7 @@ export default function LatestInsights({ posts = [] }) {
     <section className="py-24 bg-brand-900 border-t border-brand-gold/20 relative">
       <div className="container mx-auto px-6">
         
-        {/* Header with Arrows */}
+        {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-brand-gold/10 pb-6">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -39,7 +39,7 @@ export default function LatestInsights({ posts = [] }) {
             </p>
           </motion.div>
 
-          {/* Navigation Buttons */}
+          {/* Nav Buttons */}
           <div className="flex items-center gap-4 mt-6 md:mt-0">
             <button 
               onClick={() => scroll('left')}
@@ -58,12 +58,12 @@ export default function LatestInsights({ posts = [] }) {
           </div>
         </div>
 
-        {/* Carousel Container */}
+        {/* Carousel */}
         <div className="relative">
           <div 
             ref={scrollRef}
-            className="flex gap-8 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} // Hide scrollbar for Firefox/IE
+            className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }} 
           >
             {posts.map((post, index) => (
               <motion.div
@@ -72,38 +72,44 @@ export default function LatestInsights({ posts = [] }) {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex-shrink-0 w-full md:w-[504px] snap-center flex justify-center"
+                // UPDATED: Use max-w instead of fixed width so it can shrink on mobile
+                className="flex-shrink-0 w-full md:max-w-[500px] snap-center flex justify-center"
               >
                 {/* Embed Container */}
                 <div 
-                  className="bg-white rounded-sm overflow-hidden shadow-xl w-full"
-                  // NOTE: Added a min-height to ensure PDF carousels don't get cut off
+                  className="bg-white rounded-sm overflow-hidden shadow-xl w-full linkedin-embed-container"
                   style={{ minHeight: '500px' }} 
                 >
                   <div 
                     dangerouslySetInnerHTML={{ __html: post.embedCode }} 
-                    className="w-full"
+                    className="w-full h-full"
                   />
+                  
+                  {/* --- MAGIC FIX: CSS to force iframe responsive --- */}
+                  <style jsx global>{`
+                    .linkedin-embed-container iframe {
+                      width: 100% !important;
+                      height: 100% !important;
+                      min-height: 500px; /* Ensures vertical space for buttons */
+                      border: none;
+                    }
+                  `}</style>
                 </div>
               </motion.div>
             ))}
 
-            {/* Fallback if empty */}
             {posts.length === 0 && (
               <div className="w-full text-center text-brand-cream/30 italic py-12">
                 No posts available. Please add LinkedIn embed codes in Sanity.
               </div>
             )}
           </div>
-          
-          {/* Gradient Fade on Edges (Optional Visual Flair) */}
-          <div className="absolute top-0 right-0 h-full w-20 bg-gradient-to-l from-brand-900 to-transparent pointer-events-none md:block hidden" />
         </div>
 
-        {/* Follow Link at Bottom */}
+        {/* Footer Link */}
         <div className="mt-8 text-center">
              <a 
-              href="https://www.linkedin.com/company/sachambers/posts/?feedView=all" // UPDATE THIS
+              href="https://www.linkedin.com/company/sachambers/posts/?feedView=all" 
               target="_blank"
               className="inline-flex items-center gap-2 text-brand-gold text-xs font-bold uppercase tracking-widest hover:underline"
             >
