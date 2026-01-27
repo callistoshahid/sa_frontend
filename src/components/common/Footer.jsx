@@ -49,7 +49,7 @@ export default function Footer() {
               <li><Link href="/about" className="hover:text-brand-gold transition-colors">The Firm Profile</Link></li>
               <li><Link href="/team" className="hover:text-brand-gold transition-colors">Our Team</Link></li>
               <li><Link href="/#practice-areas" className="hover:text-brand-gold transition-colors">Practice Areas</Link></li>
-              <li><Link href="/judgments" className="hover:text-brand-gold transition-colors">Notable Judgments</Link></li>
+              {/* <li><Link href="/judgments" className="hover:text-brand-gold transition-colors">Notable Judgments</Link></li> */}
               <li><Link href="/contact" className="hover:text-brand-gold transition-colors">Contact Us</Link></li>
             </ul>
           </div>

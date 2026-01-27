@@ -2,47 +2,9 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
-// 1. Import specific icons from React Icons
-import { 
-  FaHandshake,        
-  FaBuilding,         
-  FaChartLine,        
-  FaLandmark,         
-  FaUserShield,       
-  FaFilePen,          
-  FaFileSignature,    
-  FaBriefcase,        
-  FaShieldHalved,     
-  FaScaleBalanced,    
-  FaMoneyBillTrendUp, 
-  FaLightbulb,        
-  FaHouse,            
-  FaScroll,           
-  FaUserTie,          
-  FaGavel,            
-  FaArrowRight 
-} from "react-icons/fa6";
-
-// 2. Map schema values to Icons
-const iconMap = {
-  arbitration: <FaHandshake />,
-  company: <FaBuilding />,
-  competition: <FaChartLine />,
-  constitution: <FaLandmark />,
-  consumer: <FaUserShield />,
-  drafting: <FaFilePen />,
-  contract: <FaFileSignature />,
-  corporate: <FaBriefcase />,
-  privacy: <FaShieldHalved />,
-  civil: <FaScaleBalanced />,
-  insolvency: <FaMoneyBillTrendUp />,
-  ip: <FaLightbulb />,
-  realestate: <FaHouse />,
-  succession: <FaScroll />,
-  whitecollar: <FaUserTie />,
-  default: <FaGavel />
-};
+import Image from 'next/image';
+import { urlFor } from '@/lib/sanity'; // Ensure you have this helper imported
+import { FaArrowRight } from "react-icons/fa6"; // Keeping Arrow icon for the hover effect
 
 export default function PracticeAreas({ practices = [] }) {
   
@@ -59,7 +21,6 @@ export default function PracticeAreas({ practices = [] }) {
     show: { opacity: 1, y: 0 }
   };
 
-  // Fallback Lorem Ipsum text as requested
   const defaultText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
   return (
@@ -74,7 +35,7 @@ export default function PracticeAreas({ practices = [] }) {
           className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-slate-100 pb-6"
         >
           <h2 className="text-4xl font-serif text-brand-900">Practice Areas</h2>
-          <span className="text-slate-400 text-sm tracking-widest uppercase mt-4 md:mt-0">Comprehensive Legal Solutions</span>
+          <span className="text-slate-400 text-sm tracking-widest uppercase mt-4 md:mt-0 font-sans">Comprehensive Legal Solutions</span>
         </motion.div>
 
         {/* Grid */}
@@ -86,8 +47,6 @@ export default function PracticeAreas({ practices = [] }) {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {practices.map((area, index) => {
-            const IconComponent = iconMap[area.iconName] || iconMap.default;
-
             return (
               <motion.div 
                 key={area.slug?.current || index} 
@@ -99,9 +58,21 @@ export default function PracticeAreas({ practices = [] }) {
                 >
                   <div className="flex items-start gap-4">
                     
-                    {/* Icon Section */}
-                    <div className="shrink-0 mt-1 text-3xl text-brand-gold/80 group-hover:text-brand-gold group-hover:scale-110 transition-all duration-300">
-                      {IconComponent}
+                    {/* --- UPDATED: Image Icon Section --- */}
+                    <div className="shrink-0 mt-1 relative w-12 h-12 transition-transform duration-300 group-hover:scale-110">
+                      {area.icon ? (
+                        <Image
+                          src={urlFor(area.icon).url()}
+                          alt={area.title}
+                          fill
+                          className="object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                        />
+                      ) : (
+                        // Fallback gray box if no icon uploaded yet
+                        <div className="w-full h-full bg-slate-200 rounded-full flex items-center justify-center text-xs text-slate-400">
+                          N/A
+                        </div>
+                      )}
                     </div>
                     
                     {/* Text Section */}
@@ -112,14 +83,13 @@ export default function PracticeAreas({ practices = [] }) {
                       {/* Title */}
                       <h3 className="text-lg font-serif text-brand-900 uppercase tracking-wide group-hover:text-brand-gold transition-colors flex items-center justify-between mb-2">
                         {area.title}
-                        <span className="opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-sm">
+                        <span className="opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300 text-sm text-brand-gold">
                           <FaArrowRight />
                         </span>
                       </h3>
 
-                      {/* NEW: SEO Description (2 Lines Max) */}
+                      {/* Description */}
                       <p className="text-sm text-slate-600 font-sans leading-relaxed line-clamp-2 opacity-80 group-hover:opacity-100 transition-opacity">
-                        {/* Uses real data if available, otherwise uses Lorem Ipsum */}
                         {area.description ? area.description : defaultText}
                       </p>
                     </div>
