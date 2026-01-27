@@ -33,24 +33,20 @@ export default function AboutClient() {
   return (
     <div ref={ref} className="bg-white">
 
+      {/* 1. HERO SECTION */}
       <section className="relative w-full h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-
-        {/* --- NEW APPROACH: BACKGROUND IMAGE --- */}
-        {/* We use the Next.js Image component to fill the container */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/sachambers_hero2.jpg" // Ensure file is in 'public' folder
+            src="/sachambers_hero2.jpg" 
             alt="S&A Law Chambers"
-            fill // This makes it stretch to cover the parent div
-            className="object-cover object-center" // Keeps it proportional
-            priority // Loads it immediately (no blur/grey flash)
+            fill
+            className="object-cover object-center" 
+            priority
             quality={100}
           />
-          {/* Dark Overlay (Adjust opacity here: 0.3 = 30% darkness) */}
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
 
-        {/* --- CONTENT (Text) --- */}
         <div className="relative z-10 text-center px-6">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -69,10 +65,11 @@ export default function AboutClient() {
           />
         </div>
       </section>
+
       {/* 2. MAIN CONTENT */}
       <section className="py-24 container mx-auto px-6 max-w-5xl">
 
-        {/* Intro Text - Fades Up */}
+        {/* Intro Text */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,7 +85,7 @@ export default function AboutClient() {
           </p>
         </motion.div>
 
-        {/* 3. CORE VALUES - Slide In Effect */}
+        {/* 3. CORE VALUES */}
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -96,9 +93,7 @@ export default function AboutClient() {
           transition={{ duration: 0.8 }}
           className="bg-brand-900 text-white p-10 md:p-14 rounded-sm shadow-2xl border-l-8 border-brand-gold mb-20 relative overflow-hidden group"
         >
-          {/* Moving Background Gradient */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out"></div>
-
           <div className="absolute top-[-20px] right-[-20px] text-9xl text-white opacity-5 font-serif select-none">”</div>
 
           <h3 className="text-xl font-serif font-bold text-brand-gold mb-6 uppercase tracking-widest">
@@ -109,8 +104,8 @@ export default function AboutClient() {
           </p>
         </motion.div>
 
-        {/* 4. FORUMS OF PRACTICE - Staggered Grid */}
-        <div className="bg-brand-cream p-10 md:p-14 border border-slate-200 mb-20 relative">
+        {/* 4. FORUMS OF PRACTICE */}
+        <div className="bg-brand-cream p-8 md:p-14 border border-slate-200 mb-20 relative">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -144,21 +139,22 @@ export default function AboutClient() {
               <motion.li
                 key={index}
                 variants={item}
-                className="flex items-center text-brand-800 font-medium text-lg hover:text-brand-900 transition-colors"
+                // UPDATED: Changed 'items-center' to 'items-start' to handle multiline text on mobile
+                className="flex items-start text-brand-800 font-medium text-lg hover:text-brand-900 transition-colors"
               >
-                {/* Animated Checkmark */}
-                <span className="w-6 h-6 mr-4 flex items-center justify-center rounded-full bg-brand-gold/10 text-brand-gold">
+                {/* UPDATED: Added 'shrink-0' so icon doesn't squish, and 'mt-1' for alignment */}
+                <span className="shrink-0 w-6 h-6 mr-4 flex items-center justify-center rounded-full bg-brand-gold/10 text-brand-gold mt-1">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </span>
-                {court}
+                <span>{court}</span>
               </motion.li>
             ))}
           </motion.ul>
         </div>
 
-        {/* 5. CALL TO ACTION - Scale Up */}
+        {/* 5. CALL TO ACTION */}
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}

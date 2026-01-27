@@ -55,7 +55,7 @@ export default function Hero() {
           className="mb-8"
         >
           <span className="inline-block border-y border-white/20 py-3 px-6">
-            <span className="text-white text-sm md:text-base font-serif font-bold tracking-[0.3em] uppercase">
+            <span className="text-white text-[0.7rem] md:text-base font-serif font-bold tracking-[0.3em] uppercase">
               Ethics &bull; Excellence &bull; Experience
             </span>
           </span>

@@ -4,12 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-// - Imported necessary hooks and components
 
 export default function Navbar({ practiceAreas = [] }) {
-  const [isOpen, setIsOpen] = useState(false); // Mobile Menu State
-  const [practiceDropdown, setPracticeDropdown] = useState(false); // Desktop Hover State
-  const [mobilePracticeOpen, setMobilePracticeOpen] = useState(false); // NEW: Mobile Sub-menu Toggle State
+  const [isOpen, setIsOpen] = useState(false);
+  const [practiceDropdown, setPracticeDropdown] = useState(false);
+  const [mobilePracticeOpen, setMobilePracticeOpen] = useState(false);
   
   const pathname = usePathname();
 
@@ -18,13 +17,11 @@ export default function Navbar({ practiceAreas = [] }) {
     .filter(item => item.slug?.current)
     .map(item => ({
       name: item.title,
-      href: `/practice/${item.slug.current}` // Ensure this matches your page route structure
+      href: `/practice/${item.slug.current}`
     }));
 
-  const menuItems = [
-    ...dynamicPracticeLinks.slice(0, 8), 
-    { name: 'View All Practices', href: '/#practice-areas', highlight: true }
-  ];
+  // UPDATED: Now uses ALL links, no slice, no "View All" button
+  const menuItems = dynamicPracticeLinks;
 
   return (
     <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm font-sans">
@@ -43,7 +40,7 @@ export default function Navbar({ practiceAreas = [] }) {
             />
           </Link>
 
-          {/* --- DESKTOP MENU (Hidden on Mobile) --- */}
+          {/* --- DESKTOP MENU --- */}
           <div className="hidden md:flex space-x-8 items-center">
             
             <Link href="/" className={`text-sm font-medium hover:text-brand-gold transition-colors ${pathname === '/' ? 'text-brand-900 font-bold' : 'text-slate-600'}`}>
@@ -74,15 +71,14 @@ export default function Navbar({ practiceAreas = [] }) {
               </button>
 
               {/* Dropdown Content */}
-              <div className={`absolute top-24 left-0 w-64 bg-white border-t-2 border-brand-gold shadow-xl transition-all duration-200 ${practiceDropdown ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
+              {/* UPDATED: Added 'max-h-[70vh]' and 'overflow-y-auto' to handle long lists */}
+              <div className={`absolute top-24 left-0 w-72 bg-white border-t-2 border-brand-gold shadow-xl transition-all duration-200 max-h-[70vh] overflow-y-auto ${practiceDropdown ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
                 <div className="py-2">
                   {menuItems.map((link) => (
                     <Link 
                       key={link.href} 
                       href={link.href}
-                      className={`block px-6 py-3 text-sm border-b border-slate-50 last:border-0 hover:bg-slate-50 ${
-                        link.highlight ? 'text-brand-900 font-semibold bg-blue-50/50' : 'text-slate-600 hover:text-brand-900'
-                      }`}
+                      className="block px-6 py-3 text-sm text-slate-600 border-b border-slate-50 last:border-0 hover:bg-slate-50 hover:text-brand-900"
                     >
                       {link.name}
                     </Link>
@@ -123,7 +119,7 @@ export default function Navbar({ practiceAreas = [] }) {
             <Link href="/team" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-900 border-b border-slate-100 pb-2">Team</Link>
             <Link href="/clients" onClick={() => setIsOpen(false)} className="text-lg font-medium text-slate-900 border-b border-slate-100 pb-2">Clientele</Link>
 
-            {/* --- UPDATED: MOBILE COLLAPSIBLE PRACTICE AREAS --- */}
+            {/* --- MOBILE COLLAPSIBLE PRACTICE AREAS --- */}
             <div className="border-b border-slate-100 pb-2">
               <button 
                 onClick={() => setMobilePracticeOpen(!mobilePracticeOpen)}
@@ -136,14 +132,15 @@ export default function Navbar({ practiceAreas = [] }) {
               </button>
 
               {/* Collapsible List */}
-              <div className={`overflow-hidden transition-all duration-300 ease-in-out ${mobilePracticeOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+              {/* UPDATED: Increased max-height to 800px to accommodate full list on mobile */}
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${mobilePracticeOpen ? 'max-h-[800px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
                 <div className="flex flex-col space-y-3 pl-4 border-l-2 border-slate-100 ml-1">
                   {menuItems.map(link => (
                     <Link 
                       key={link.href} 
                       href={link.href} 
                       onClick={() => setIsOpen(false)} 
-                      className={`text-base ${link.highlight ? 'text-brand-gold font-semibold' : 'text-slate-600'}`}
+                      className="text-base text-slate-600 hover:text-brand-gold"
                     >
                       {link.name}
                     </Link>
