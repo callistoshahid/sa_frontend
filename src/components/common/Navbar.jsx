@@ -55,9 +55,9 @@ export default function Navbar({ practiceAreas = [] }) {
               Team
             </Link>
 
-            <Link href="/clients" className={`text-sm font-medium hover:text-brand-gold transition-colors ${pathname === '/clients' ? 'text-brand-900 font-bold' : 'text-slate-600'}`}>
+            {/* <Link href="/clients" className={`text-sm font-medium hover:text-brand-gold transition-colors ${pathname === '/clients' ? 'text-brand-900 font-bold' : 'text-slate-600'}`}>
               Clientele
-            </Link>
+            </Link> */}
 
             {/* DESKTOP PRACTICE AREAS DROPDOWN */}
             <div 
