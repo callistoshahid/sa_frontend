@@ -8,7 +8,7 @@ export default function PracticeAreaJudgments({ judgments }) {
     <div className="py-12 bg-gray-50 border-t border-gray-200">
       <div className="container mx-auto px-4 max-w-4xl">
         <h2 className="text-2xl font-serif font-bold mb-8 text-brand-900">
-          Related Judgments
+          Reported Judgments
         </h2>
         
         <div className="flex flex-col gap-6">
