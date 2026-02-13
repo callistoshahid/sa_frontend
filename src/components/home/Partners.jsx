@@ -59,7 +59,7 @@ export default function Partners({ team = [] }) {
                 {/* --- FIX START --- */}
                 {/* Added 'whitespace-pre-line' so it respects Enter keys from Sanity */}
                 <div className="text-slate-500 text-sm leading-relaxed max-w-sm mx-auto">
-                  <p className="whitespace-pre-line font-sans">{partner.bio}</p>
+                  <p className="whitespace-pre-line font-sans" style={{fontSize:"13px"}}>{partner.bio}</p>
                 </div>
                 {/* --- FIX END --- */}
 
