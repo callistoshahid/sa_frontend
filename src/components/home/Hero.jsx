@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRef } from 'react';
 
 export default function Hero() {
+  const BANNER_HEIGHT = "50vh";
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -16,7 +17,11 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-screen flex items-center justify-center overflow-hidden bg-brand-900">
+    <section
+      ref={ref}
+      style={{ height: BANNER_HEIGHT }}
+      className="relative flex items-center justify-center overflow-hidden bg-brand-900"
+    >
       
       {/* 1. ANIMATED BACKGROUND */}
       <motion.div style={{ y, opacity }} className="absolute inset-0 z-0">
@@ -27,7 +32,7 @@ export default function Hero() {
           className="relative w-full h-full"
         >
           <Image 
-             src="/sachambers_hero2.jpg" 
+             src="/banner_final.png" 
              alt="S&A Law Chambers"
              fill
              className="object-cover opacity-60"
