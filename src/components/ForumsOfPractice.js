@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-// Using the same icons as before
 import { 
   FaLandmark, 
   FaGavel, 
@@ -26,7 +25,6 @@ const forums = [
 
 export default function ForumsOfPractice() {
   
-  // Animation Variants
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -41,12 +39,13 @@ export default function ForumsOfPractice() {
   };
 
   return (
-    <section className="py-24 bg-brand-900 relative overflow-hidden">
+    // UPDATED: Changed bg-brand-900 to bg-white to contrast with the dark hero banner
+    <section className="py-24 bg-white relative overflow-hidden">
       
-      {/* Decorative Background Pattern */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-         <div className="absolute right-0 top-0 w-96 h-96 bg-brand-gold rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-         <div className="absolute left-0 bottom-0 w-64 h-64 bg-brand-gold rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      {/* Decorative Background Pattern (Subtle Grey for depth) */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+         <div className="absolute right-0 top-0 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+         <div className="absolute left-0 bottom-0 w-64 h-64 bg-brand-gold/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -57,9 +56,10 @@ export default function ForumsOfPractice() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-serif text-white mb-6"
+            // UPDATED: Changed text color to brand-900 (Dark Blue) for visibility on white
+            className="text-4xl md:text-5xl font-serif text-brand-900 mb-6"
           >
-            Forums of Practice<span className="text-brand-gold italic"></span>
+            Forums of Practice
           </motion.h2>
           
           <motion.div 
@@ -75,8 +75,8 @@ export default function ForumsOfPractice() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            // UPDATED: Added font-sans explicitly
-            className="text-brand-cream/80 text-lg font-sans font-light leading-relaxed"
+            // UPDATED: Changed text color to brand-700 (Grey/Blue)
+            className="text-brand-700 text-lg font-sans font-light leading-relaxed"
           >
             We are experienced in providing diligent representation and advice to our clients 
             in disputes before the following Courts and Tribunals.
@@ -97,14 +97,15 @@ export default function ForumsOfPractice() {
               variants={item}
               className="group relative"
             >
-              <div className="h-full p-8 bg-brand-800/50 border border-brand-cream/10 hover:border-brand-gold/50 rounded-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-900 flex flex-col items-center text-center">
+              {/* Card Container - Kept Dark for Premium Look */}
+              <div className="h-full p-8 bg-brand-900 border border-brand-900 hover:border-brand-gold/50 rounded-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-brand-900/20 flex flex-col items-center text-center">
                 
                 {/* Icon Circle */}
-                <div className="w-16 h-16 rounded-full bg-brand-900 border border-brand-gold/20 flex items-center justify-center text-2xl text-brand-gold mb-6 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-brand-900 transition-all duration-300 shadow-lg">
+                <div className="w-16 h-16 rounded-full bg-brand-800 border border-brand-gold/20 flex items-center justify-center text-2xl text-brand-gold mb-6 group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-brand-900 transition-all duration-300 shadow-lg">
                   {forum.icon}
                 </div>
                 
-                {/* Title - UPDATED to font-sans */}
+                {/* Title - Kept light since card is dark */}
                 <h3 className="text-lg font-sans font-medium tracking-wide text-brand-cream group-hover:text-white transition-colors">
                   {forum.title}
                 </h3>
