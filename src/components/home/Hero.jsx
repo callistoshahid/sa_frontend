@@ -27,7 +27,7 @@ export default function Hero() {
           className="relative w-full h-full"
         >
           <Image 
-             src="/sabanner.avif" 
+             src="/sachambers_hero2.jpg" 
              alt="S&A Law Chambers"
              fill
              className="object-cover opacity-60"
