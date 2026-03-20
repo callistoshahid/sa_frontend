@@ -24,7 +24,7 @@ async function getData() {
   `);
 
   const posts = await client.fetch(`
-    *[_type == "linkedInPost"] | order(date desc) [0...3] {
+    *[_type == "linkedInPost"] | order(date desc) {
       _id,
       embedCode
     }
