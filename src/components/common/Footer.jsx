@@ -6,18 +6,37 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // 'idle', 'submitting', 'success'
+  const [status, setStatus] = useState('idle'); // 'idle', 'submitting', 'success', 'error'
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     if (!email) return;
-    
+
     setStatus('submitting');
-    // Simulate API call
-    setTimeout(() => {
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/newsletter-subscriptions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result?.error || 'Subscription failed.');
+      }
+
       setStatus('success');
       setEmail('');
-    }, 1500);
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage(error.message || 'Unable to subscribe right now.');
+    }
   };
 
   return (
@@ -102,7 +121,13 @@ export default function Footer() {
                   placeholder="Email Address"
                   required
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (status === 'error') {
+                      setStatus('idle');
+                      setErrorMessage('');
+                    }
+                  }}
                   className="w-full bg-brand-800 border border-brand-700 text-brand-cream text-sm px-4 py-3 focus:outline-none focus:border-brand-gold transition-colors placeholder-brand-700"
                 />
                 <button 
@@ -112,6 +137,9 @@ export default function Footer() {
                 >
                   {status === 'submitting' ? 'Subscribing...' : 'Subscribe'}
                 </button>
+                {status === 'error' && (
+                  <p className="text-red-300 text-xs">{errorMessage}</p>
+                )}
               </form>
             )}
           </div>

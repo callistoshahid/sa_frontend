@@ -69,6 +69,7 @@ const FormField = ({
 export default function ContactForm() {
   const [focusedField, setFocusedField] = useState(null);
   const [formState, setFormState] = useState('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   
   // FORM STATE
   const [formData, setFormData] = useState({
@@ -81,6 +82,7 @@ export default function ContactForm() {
 
   // 1. Generic Change Handler
   const handleChange = (e) => {
+    if (errorMessage) setErrorMessage('');
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
@@ -89,13 +91,14 @@ export default function ContactForm() {
     const input = e.target.value;
     // Regex: Only allow numbers (0-9)
     const numericValue = input.replace(/[^0-9]/g, '');
-    
+    if (errorMessage) setErrorMessage('');
     setFormData({ ...formData, phone: numericValue });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    setErrorMessage('');
+
     // Final Validation before submit
     if (formData.phone.length !== 10) {
       alert("Please enter a valid 10-digit Indian phone number.");
@@ -103,7 +106,27 @@ export default function ContactForm() {
     }
 
     setFormState('submitting');
-    setTimeout(() => setFormState('success'), 2000);
+
+    try {
+      const response = await fetch('/api/contact-inquiries', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result?.error || 'Submission failed.');
+      }
+
+      setFormState('success');
+    } catch (error) {
+      setFormState('idle');
+      setErrorMessage(error.message || 'Unable to submit right now. Please try again.');
+    }
   };
 
   if (formState === 'success') {
@@ -119,6 +142,7 @@ export default function ContactForm() {
         <button 
           onClick={() => {
             setFormState('idle'); 
+            setErrorMessage('');
             setFormData({ name: '', email: '', phone: '', purpose: 'Legal Consultation', message: '' });
           }}
           className="text-xs font-bold uppercase tracking-widest text-brand-gold hover:text-white transition-colors"
@@ -216,6 +240,9 @@ export default function ContactForm() {
       >
         {formState === 'submitting' ? 'Processing...' : 'Submit Inquiry'}
       </button>
+      {errorMessage && (
+        <p className="text-red-600 text-xs mt-3">{errorMessage}</p>
+      )}
 
       <p className="text-[10px] text-slate-400 mt-6 text-center font-sans">
         * All communications are strictly privileged and confidential.
